@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+// import './astro.css';
+import {useState} from 'react'
+import AlertContainer from './AlertContainer'
+import ContactsContainer from './ContactsContainer'
+import { RuxToggle } from "@astro-components/rux-toggle/rux-toggle.js";
 
 function App() {
+
+  const [state, setState] = useState(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div>
+   <rux-toggle disabled="false" checked="false"></rux-toggle>
+   {state === true ? <AlertContainer/> :  <ContactsContainer/>}
+   </div>
   );
 }
 
