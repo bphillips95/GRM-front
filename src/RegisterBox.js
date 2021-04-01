@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {Link,useHistory } from 'react-router-dom'
 
-export default function RegisterBox(props) {
+export default function RegisterBox() {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -70,9 +70,6 @@ export default function RegisterBox(props) {
                                         <input type="password" class="form-control" placeholder="password"
                                             onChange={(e) => setPassword(e.target.value)} value={password}
                                         />
-                                    </div>
-                                    <div class="row align-items-center remember">
-                                        <input type="checkbox"/>Remember Me
                                     </div>
                                     <div class="form-group">
                                         <input type="submit" value="Register" class="btn float-right login_btn"/>

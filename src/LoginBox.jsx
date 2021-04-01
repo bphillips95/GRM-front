@@ -2,7 +2,7 @@ import './LoginBox.css'
 import {useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 
-export default function LoginBox(props) {
+export default function LoginBox() {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -32,7 +32,6 @@ export default function LoginBox(props) {
             if(resp.jwt) {
             localStorage.setItem("token", resp.jwt)
             localStorage.setItem("user", resp.user.username)
-            // localStorage.setItem("user_id", resp.user.id)
             history.push('/')
         } else {
             alert("Wrong username or password")
@@ -72,9 +71,6 @@ export default function LoginBox(props) {
                                     <input type="password" class="form-control" placeholder="password"
                                         onChange={(e) => setPassword(e.target.value)} value={password}
                                     />
-                                </div>
-                                <div class="row align-items-center remember">
-                                    <input type="checkbox"/>Remember Me
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Login" class="btn float-right login_btn"/>
