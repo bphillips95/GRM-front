@@ -5,6 +5,7 @@ import ContactComponent from './ContactComponent'
 export default function ContactsContainer() {
 
     const [contacts, setContacts] = useState([])
+    const [sorted, setSorted] = useState(false)
 
     useEffect(() => {
       fetch('https://grm-back.herokuapp.com/contacts')
@@ -12,12 +13,24 @@ export default function ContactsContainer() {
       .then(data => setContacts(data))
     }, [])
 
+    useEffect(() => {
+     
+    }, [sorted])
+
     const listContacts = contacts.map(contact => 
         <ContactComponent contact={contact}   />
       )
 
+    const unique = [...new Set(contacts.map(contact => contact.contactState))]; 
+
+    let sortedContacts = contacts.sort((a,b) => a.contactName - b.contactName)
+
+    const listSortedContacts = sortedContacts.map(contact => 
+      <ContactComponent contact={contact}   />
+    )
+
     return (
-      <table className="table"  style={{width:"500px"}} >
+      <table className="table"  style={{width:"500px",overflow:'scroll', verticalAlign:'top', display: 'inline-block',margin:'0 10'}} >
   <thead className="thead-light" >
     <tr>
       <th scope="col" style={{width:"100px"}}>Contact #</th>
@@ -25,9 +38,12 @@ export default function ContactsContainer() {
       <th scope="col" style={{width:"100px"}}>Contact Status</th>
       <th scope="col" >Timestamp</th>
     </tr>
+    <th>Total Contacts {contacts.length} </th>
+    <th>Contact States {unique} </th>
+    <button onClick={() => setSorted(!sorted)} >Sort Contacts</button>
   </thead>
   <tbody>
-    {listContacts}
+    {sorted ? listSortedContacts : listContacts}
   </tbody>
 </table>
     //   <Fragment>

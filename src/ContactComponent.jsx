@@ -8,7 +8,6 @@ export default function ContactComponent({contact}) {
 
     return (
          <Fragment>
-         {console.log(start,end)}
                   {/* <rux-tabs aria-labelledby="tab-set-id-1">
         <rux-tab aria-labelledby="tab-id-1">{contact.contactState}</rux-tab>
         <rux-tab aria-labelledby="tab-id-2" >{contact.contactStatus}</rux-tab>

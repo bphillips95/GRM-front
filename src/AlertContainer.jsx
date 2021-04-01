@@ -17,13 +17,25 @@ export default function AlertContainer() {
       )
 
     return (
-        <Fragment>
-        <rux-tabs id="tab-set-id-1">
-        <rux-tab id="tab-id-1">Error Category</rux-tab>
-        <rux-tab id="tab-id-2">Error Message</rux-tab>
-        <rux-tab id="tab-id-3">Error Time</rux-tab>
-      </rux-tabs>
-      {listAlerts}
-      </Fragment>
+      //   <Fragment>
+      //   <rux-tabs id="tab-set-id-1">
+      //   <rux-tab id="tab-id-1">Error Category</rux-tab>
+      //   <rux-tab id="tab-id-2">Error Message</rux-tab>
+      //   <rux-tab id="tab-id-3">Error Time</rux-tab>
+      // </rux-tabs>
+      // {listAlerts}
+      // </Fragment>
+      <table className="table" style={{width:"500px",overflow:'scroll', verticalAlign:'top', display: 'inline-block'}}  >
+  <thead className="thead-light" >
+    <tr>
+      <th scope="col" style={{width:"100px"}}>Error Category</th>
+      <th scope="col" style={{width:"10px"}}>Error Message</th>
+      <th scope="col" style={{width:"100px"}}>Error Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    {listAlerts}
+  </tbody>
+</table>
     )
 }
