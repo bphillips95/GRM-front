@@ -13,7 +13,7 @@ export default function Home(props) {
         <Fragment >
             <AlertContainer style={{float:'left'}} />
             <Header props={props} />
-            <ContactsContainer style={{float:'right'}} />
+            <ContactsContainer  />
         </Fragment>
     )
     } else {

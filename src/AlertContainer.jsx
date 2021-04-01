@@ -5,6 +5,7 @@ import { RuxTabs } from '@astrouxds/rux-tabs/rux-tabs.js';
 export default function AlertContainer() {
 
     const [alerts, setAlerts] = useState([])
+    const [sorted, setSorted] = useState(false)
 
     useEffect(() => {
         fetch('https://grm-back.herokuapp.com/alerts')
@@ -12,7 +13,13 @@ export default function AlertContainer() {
         .then(data => setAlerts(data))
       }, [])
 
+      let alertsCopy = [...alerts]  
+      let sortedAlerts = alertsCopy.sort((a,b) => a.errorCategory.localeCompare(b.errorCategory))
+
       const listAlerts = alerts.map(alert => 
+        <AlertsComponent alert={alert}   />
+      )
+      const listSortedAlerts = sortedAlerts.map(alert => 
         <AlertsComponent alert={alert}   />
       )
 
@@ -25,16 +32,17 @@ export default function AlertContainer() {
       // </rux-tabs>
       // {listAlerts}
       // </Fragment>
-      <table className="table" style={{width:"500px",overflow:'scroll', verticalAlign:'top', display: 'inline-block'}}  >
+      <table className="table" style={{height:"650px", width:"500px",overflow:'scroll', verticalAlign:'top', display: 'inline-block'}}  >
   <thead className="thead-light" >
     <tr>
       <th scope="col" style={{width:"100px"}}>Error Category</th>
       <th scope="col" style={{width:"10px"}}>Error Message</th>
       <th scope="col" style={{width:"100px"}}>Error Time</th>
     </tr>
+    <button onClick={() => setSorted(!sorted)}>Sort Errors</button>
   </thead>
   <tbody>
-    {listAlerts}
+    {sorted ? listSortedAlerts : listAlerts}
   </tbody>
 </table>
     )

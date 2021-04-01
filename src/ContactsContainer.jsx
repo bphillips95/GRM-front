@@ -13,24 +13,20 @@ export default function ContactsContainer() {
       .then(data => setContacts(data))
     }, [])
 
-    useEffect(() => {
-     
-    }, [sorted])
-
-    const listContacts = contacts.map(contact => 
-        <ContactComponent contact={contact}   />
-      )
-
     const unique = [...new Set(contacts.map(contact => contact.contactState))]; 
 
-    let sortedContacts = contacts.sort((a,b) => a.contactName - b.contactName)
+    let contactsCopy = [...contacts]  
+    let sortedContacts = contactsCopy.sort((a,b) => a.contactName - b.contactName)
+
+    const listContacts = contacts.map(contact => 
+      <ContactComponent contact={contact}   />
+    )
 
     const listSortedContacts = sortedContacts.map(contact => 
       <ContactComponent contact={contact}   />
     )
-
     return (
-      <table className="table"  style={{width:"500px",overflow:'scroll', verticalAlign:'top', display: 'inline-block',margin:'0 10'}} >
+      <table className="table"  style={{height:"650px", width:"500px",overflow:'scroll', verticalAlign:'top', display: 'inline-block',margin:'0 10'}} >
   <thead className="thead-light" >
     <tr>
       <th scope="col" style={{width:"100px"}}>Contact #</th>
