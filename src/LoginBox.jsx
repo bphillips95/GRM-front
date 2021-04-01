@@ -36,7 +36,6 @@ export default function LoginBox(props) {
             history.push('/')
         } else {
             alert("Wrong username or password")
-            console.log(resp.error)
         }
         })
         .catch(err => console.log(err))

@@ -26,6 +26,7 @@ export default function ContactsContainer() {
       <ContactComponent contact={contact}   />
     )
     return (
+      <Fragment>
       <table className="table"  style={{height:"650px", width:"500px",overflow:'scroll', verticalAlign:'top', display: 'inline-block',margin:'0 10'}} >
   <thead className="thead-light" >
     <tr>
@@ -34,14 +35,16 @@ export default function ContactsContainer() {
       <th scope="col" style={{width:"100px"}}>Contact Status</th>
       <th scope="col" >Timestamp</th>
     </tr>
-    <th>Total Contacts {contacts.length} </th>
-    <th>Contact States {unique} </th>
-    <button onClick={() => setSorted(!sorted)} >Sort Contacts</button>
   </thead>
   <tbody>
     {sorted ? listSortedContacts : listContacts}
   </tbody>
 </table>
+    <div style={{position: "absolute", right:"240px"}} >
+        <ul>Total Contacts {contacts.length} </ul>
+        <ul>Contact States are {unique.join(', and ')}  <button onClick={() => setSorted(!sorted)} >Sort Contacts</button> </ul>
+    </div>
+</Fragment>
     //   <Fragment>
     //   <rux-tabs id="tab-set-id-1">
     //   <rux-tab id="tab-id-1">Contact State</rux-tab>
